@@ -1,2 +1,3 @@
 # Bandit
-My journey in completing Bandit
+
+# My Journey Through Bandit
