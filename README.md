@@ -104,6 +104,25 @@ I used **ssh** to establish a secure connection. The **ls** command listed all t
 - **ls**
 - **cat ./--spaces\ in\ this\ filename--**
 
+# Key Insights
+
+- Filenames with spaces must be treated as a single argument.
+- Filenames starting with dashes are interpreted as options unless you force the shell to treat them literally.
+- Combining both techniques lets you safely access tricky filenames.
+
+# Real-World Relevance
+
+- Attakers and malware often use confusing filenames to hide.
+- System logs and automated tools sometimes generate odd filenames.
+- Correct arguments handling prevents accidental misuse of commands.
+
+# What I Learned
+
+This level taught me how important it is to understand how the shell interprets filenames. I learned how to handle files that contain spaces or start with dashes, and how to to use qouting, es
+
+
+
+
 
 
 
