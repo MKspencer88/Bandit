@@ -19,9 +19,11 @@ When I was researching what I can do to gain cybersecurity experience without ha
 
 # Level 0 --> Level 1 
 
+The password for the next level is in a file called **readme** located in the home directory.
+
 # What I did
 
-First I logged into the Bandit server by using **SSH** and explored the home directory with **ls**. This revealed a files named **readme**, which I opened using **cat** to view the password for the next level
+- First I logged into the Bandit server by using **SSH** explored the home directory with **ls**. This revealed a files named **readme**, which I opened using **cat** to view the password for the next level
 
 <img width="823" height="46" alt="Screenshot 2026-02-27 151359" src="https://github.com/user-attachments/assets/421d91ff-5631-4424-9af4-233e5a2ba367" />
 
@@ -48,6 +50,8 @@ Connecting to remote systems with SSH is a core skill in cybersecurity and IT. A
 Working through this level reminded me tha even the simpliest of tasks the cybersecurity start with understanding the environment. Logging in, listing files, and reading a basic text file may seem small, but they are the foundation of everything that comes later. This level helped me slow down, get comfortable navigating a remote Linux system, and build confidence with SSH and basic shell commands before moving into more complex challenges.
 
 # Level 1 --> Level 2
+
+The password in store in a file called **-**. 
 
 # What I did
 
@@ -84,15 +88,17 @@ This level taughe me how Linux interprets command-line arguments and how to safe
 
 Level 2 --> Level 3
 
+The password is stored in a file called --spaces in this filename--.
+
 # What I did
 
-I used **ssh** to establish a secure connection. The **ls** command listed all the files in the directory. The file that was revealed was called **--spaces in this filename--**. The command **cat --space in this filename--** doesn't work because **'--"** looks like an option not a file kinda like the previous level. So the command **cat --spaces in this filename--** is being treated as four seperate arguments. The correct command **cat ./--spaces\ in\ this\ filename--**. **./** tells the shell that this a file and not an option. \ keeps the spaces together so the shell sees one filename instead of several. This command works because **./** forces the shell to treat the name as a real files instead of an option, and escaping the spaces keeps the entire filename together as one argument.
-
+- I used **ssh** to establish a secure connection.
 <img width="774" height="617" alt="image" src="https://github.com/user-attachments/assets/8d93a884-d5c1-43ed-bc3b-1d0ebf2ac66d" />
 
-<img width="774" height="617" alt="image" src="https://github.com/user-attachments/assets/0bbd47ae-1703-4b17-80be-9260de81385f" />
-
+- The **ls** command listed all the files in the directory. The file that was revealed was called **--spaces in this filename--**.
 <img width="253" height="77" alt="image" src="https://github.com/user-attachments/assets/1b089a0a-ac1f-4af4-aead-c015738a8dd0" />
+
+- The command **cat --space in this filename--** doesn't work because **'--"** looks like an option not a file kinda like the previous level. So the command **cat --spaces in this filename--** is being treated as four seperate arguments. The correct command **cat ./--spaces\ in\ this\ filename--**. **./** tells the shell that this a file and not an option. \ keeps the spaces together so the shell sees one filename instead of several. This command works because **./** forces the shell to treat the name as a real files instead of an option, and escaping the spaces keeps the entire filename together as one argument.
 
 <img width="448" height="51" alt="image" src="https://github.com/user-attachments/assets/dc947651-02d6-4e6f-9d8f-47ec768a7cce" />
 
@@ -118,7 +124,49 @@ I used **ssh** to establish a secure connection. The **ls** command listed all t
 
 # What I Learned
 
-This level taught me how important it is to understand how the shell interprets filenames. I learned how to handle files that contain spaces or start with dashes, and how to to use qouting, es
+This level taught me how important it is to understand how the shell interprets filenames. I learned how to handle files that contain spaces or start with dashes, and how to to use qouting, escaping, or path prefixes to avoid mistakes. It made me more confident working with unusual filenames and more aware of how easily the shall can misinterpret arguments if not precise.
+
+# Level 3 --> Level 4
+
+The password is stored in a hidden file in the **inhere** directory. 
+
+# What I Did
+
+- I used **ssh** to gain access to the Bandit server
+<img width="678" height="581" alt="image" src="https://github.com/user-attachments/assets/b264f590-9d56-4d28-8db2-e654d117a95f" />
+
+- I searched the home **(~)** directory and it listed another directory called **inhere**.
+<img width="214" height="70" alt="image" src="https://github.com/user-attachments/assets/878ce6a9-9b49-45f7-83fd-8b553a5eaee3" />
+
+- I navigated into the **inhere** directory with the command **cd inhere**. Once I was in the **inhere** directory I listed the directory again and nothing happened. When I remembered in the objective the file is **hidden**.
+<img width="280" height="73" alt="image" src="https://github.com/user-attachments/assets/dd779f12-39d7-4566-8397-52afe3f3df01" />
+
+- The command **ls -la** is what is going to list ALL the files in the directory. The **-a** is the option to show all the files. The output reveals a file called ...Hiding-From-You. The reason why this is hidden is because it starts with a dot.
+<img width="608" height="119" alt="image" src="https://github.com/user-attachments/assets/e08284fd-f4b2-4174-8453-b7d8b3fc348e" />
+
+- I open the file using **cat ...Hiding-From-You** and it gives me the password to the next level. 
+<img width="467" height="71" alt="image" src="https://github.com/user-attachments/assets/9ec5cf3a-8a68-4974-ae9c-d66d03231cbd" />
+
+# Key Insights
+
+- Linux hides any file or directory that begins with a dot.
+- ** ls -la** reveals everything, including hidden files and directories. The **-a** flat is essential when exploring unfamiliar environments because it shows what would otherwise be invisible.
+- Never assume a directory is emptpy just because ls shows nothing.
+
+# Real-World Relevence
+
+- Hidden files are everywhere in real systems.
+- Malware frequently hides in dot-folders. Attckers use hidden directories to avoid detection.
+- Troubleshooting often depends on checking hidden fuiles. Many issues live in places you wouldn't see without ls -la.
+
+# What I learned
+
+I learned that first view of a directory doesn't always tell the full story. When ls showed nothing, it didn't mean the directory was empty. Using **ls -la** helped me uncover hidden files and made me more aware of how Linux organizes important system data. This level reinforced the habit of always checking for hidden items when exploring or troubleshooting a system.
+
+# Level 3 --> Level 4
+
+# 
+
 
 
 
