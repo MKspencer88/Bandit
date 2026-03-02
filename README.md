@@ -3,6 +3,7 @@
 # Overview
 
 When I was researching what I can do to gain cybersecurity experience without having a job, overthewire.org was the one of the first thing suggested. Bandit is a Linux-based wargame designed to teach foundational security skills through hands-on puzzles. This project documents how each level shaped my understanding of:
+
 - Command-line navigation
 - Permissions
 - Processes
@@ -84,9 +85,9 @@ I listed files in the home directory using **ls**, the command reavealed a file 
 
 # What I Learned
 
-This level taughe me how Linux interprets command-line arguments and how to safely handle files with misleading or special names. It reinforced the importance of understanding how the shall parses options versus literal filenames. A small detial that has big implications in real security and system administration work.
+This level taught me how Linux interprets command-line arguments and how to safely handle files with misleading or special names. It reinforced the importance of understanding how the shell parses options versus literal filenames. A small detail that has big implications in real security and system administration work.
 
-Level 2 --> Level 3
+# Level 2 --> Level 3
 
 The password is stored in a file called --spaces in this filename--.
 
@@ -163,9 +164,32 @@ The password is stored in a hidden file in the **inhere** directory.
 
 I learned that first view of a directory doesn't always tell the full story. When ls showed nothing, it didn't mean the directory was empty. Using **ls -la** helped me uncover hidden files and made me more aware of how Linux organizes important system data. This level reinforced the habit of always checking for hidden items when exploring or troubleshooting a system.
 
-# Level 3 --> Level 4
+# Level 4 --> Level 5
 
-# 
+The password is stored in the only human-readable file in the **inhere** directory. 
+
+# What I Did
+
+- Gained access to bandit4 through ssh, listed the directory and found the **inhere** directory. I moved into that directory using **cd**. 
+<img width="636" height="583" alt="image" src="https://github.com/user-attachments/assets/b3d1a034-8b09-4594-86f6-effa85f1bd62" />
+
+- I listed the **inhere** directory and a bunch of files were listed. My goal is to find the only human-readable file in this directory.
+<img width="835" height="125" alt="image" src="https://github.com/user-attachments/assets/1af2eafd-833e-42a1-b034-4208677b7c42" />
+
+- The **file** command looks inisde of a file and identifies the content. So when I run the commmand **file ./*** it shows me what content is in each file. ASCII text is human-readable data. The command cat ./-file07 is going to open the ASCII text file and reveal the password. 
+<img width="402" height="216" alt="image" src="https://github.com/user-attachments/assets/24e6a450-6af6-473a-96a3-024f9c9e3153" />
+<img width="362" height="47" alt="image" src="https://github.com/user-attachments/assets/08f9f57d-3b8d-48a2-8e2c-387d844bda50" />
+
+# Key Inisights
+
+- The **file** command indentifies what type of data a file contains, regardless of its name or extenstion. This make it easy to spot which files are readable and which are binary, empty, or junk.
+- When a directory contains many unknown files, guessing or opening them one by one is inefficient. Using **file ./*** OR **file inhere/*** (this works if you are not in the inhere directory.)
+
+
+
+
+
+
 
 
 
